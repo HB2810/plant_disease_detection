@@ -7,7 +7,7 @@ from PIL import Image
 # Load Model
 MODEL_PATH = 'models/plant_disease_model.pth'
 NUM_CLASSES = 38
-CLASS_NAMES = os.listdir('D:/plant_disease_detection/dataset/train')
+CLASS_NAMES = os.listdir('class_names.txt')
 
 # Disease Information (Descriptions & Treatments)
 disease_info = {
