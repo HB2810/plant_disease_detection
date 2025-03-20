@@ -13,11 +13,16 @@ import os
 def load_model(model_path, num_classes=38):
     from models.model import PlantDiseaseModel  # Correct import for PlantDiseaseModel
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    checkpoint = torch.load(model_path, map_location=device)
+
+    # Updated torch.load with weights_only=False
+    checkpoint = torch.load(model_path, map_location=device, weights_only=False)
+
     model = PlantDiseaseModel(num_classes).to(device)
     model.load_state_dict(checkpoint['model'].state_dict())
     model.eval()
+    
     return model
+
 
 # Image Preprocessing
 def preprocess_image(image_path):
