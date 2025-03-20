@@ -7,7 +7,10 @@ from PIL import Image
 # Load Model
 MODEL_PATH = 'models/plant_disease_model.pth'
 NUM_CLASSES = 38
-CLASS_NAMES = os.listdir('class_names.txt')
+# Load class names from text file
+with open('class_names.txt', 'r') as f:
+    CLASS_NAMES = [line.strip() for line in f.readlines()]
+
 
 # Disease Information (Descriptions & Treatments)
 disease_info = {
